@@ -35,8 +35,7 @@ public class Arquivo {
     }
 
     public void atorMaisNovoAGanharOscar(){
-        System.out.println("Ator/Atriz mais jovem a ganhar um Oscar!");
-        //this.getAtoresList().stream().sorted().limit(1).forEach(System.out::println);
+        System.out.println("\n\nAtor/Atriz mais jovem a ganhar um Oscar!");
         this.getAtoresList()
                 .stream()
                 .min(Comparator.comparing(Actor::getAge))
@@ -66,7 +65,6 @@ public class Arquivo {
                 .map(Actor::getName)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
-        //Captura o maior valor
         Long valor;
         valor = atrizes.entrySet()
                 .stream()
@@ -94,17 +92,19 @@ public class Arquivo {
 
     public void informacoesDoAtor(Arquivo file, String nome){
 
-        Map<Actor, Long> allActors = Stream.concat(this.getAtoresList().stream(), file.getAtoresList().stream())
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+      List<Actor> allActors = Stream.concat(this.getAtoresList().stream(), file.getAtoresList().stream())
+              .filter(a -> a.getName().equals(nome))
+              .collect(Collectors.toList());
 
-        allActors.
-                forEach((key, value) -> System.out.println(key + " ganhou " + value + " vezes"));
-        /*
-        //Salvar uma lista de objetos como chave e utilizar atributo como valor no Stream
-        allActors.entrySet()
-                .stream()
-                .filter(a -> a.getKey().getName().equals(nome))
-                .forEach( a -> System.out.println(a.getKey().getName() + " ganhou " + a.getValue() + " vezes"));
-         */
+      long totalOscars = allActors.size();
+      Optional<Actor> actor = Optional.of(allActors.get(0));
+      System.out.println(actor.get().getName() + " ganhou " + totalOscars + " vezes o oscar!");
+
+      allActors.stream()
+              .sorted()
+              .forEach( a -> System.out.println("Ganhou no filme: " +
+                       a.getMovie() +
+                       " com " + a.getAge() + " anos em: " +
+                       a.getYear()));
     }
 }

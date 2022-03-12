@@ -16,12 +16,14 @@ public class Aplicacao {
 
         fileActors.atoresEAtrizesQueGanharamMaisDeUmOscar(fileActress);
 
+        System.out.println("Informações do Ator!");
+        String nome = "";
         Scanner scan = new Scanner(System.in);
-        System.out.println("\n\nDigite o nome do Ator: ");
-        String nome = scan.next();
-        scan.close();
-
-        fileActors.informacoesDoAtor(fileActress, nome);
-
+        while(!nome.equals("x")){
+            System.out.println("\n\nDigite o nome do Ator ou x para sair: ");
+            nome = scan.nextLine();
+            if(nome.equals("x")){ System.exit(0);}
+            fileActors.informacoesDoAtor(fileActress, nome);
+        }
     }
 }
