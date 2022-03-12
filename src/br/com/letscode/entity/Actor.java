@@ -3,11 +3,11 @@ package br.com.letscode.entity;
 import static java.lang.Integer.parseInt;
 
 public class Actor implements Comparable{
-    private int id;
-    private int year;
-    private int age;
-    private String name;
-    private String movie;
+    private final int id;
+    private final int year;
+    private final int age;
+    private final String name;
+    private final String movie;
 
     public Actor(int id, int year, int age, String name, String movie){
         this.id = id;
@@ -28,42 +28,20 @@ public class Actor implements Comparable{
         );
     }
 
-    public int getId() {return id;}
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getAge() {
         return age;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public String getMovie() {
         return movie;
     }
 
-    public void setMovie(String movie) {
-        this.movie = movie;
-    }
-
     public int getYear() {
         return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
     }
 
     @Override
@@ -77,16 +55,9 @@ public class Actor implements Comparable{
                 '}';
     }
 
-
     @Override
     public int compareTo(Object other) {
         Actor ator = (Actor) other;
-        if(this.age < ator.age){
-            return -1;
-        }
-        if(this.age > ator.age){
-            return 1;
-        }
-        return 0;
+        return Integer.compare(this.age, ator.age);
     }
 }
