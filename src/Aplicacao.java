@@ -17,13 +17,13 @@ public class Aplicacao {
         fileActors.atoresEAtrizesQueGanharamMaisDeUmOscar(fileActress);
 
         System.out.println("Informações do Ator!");
-        String nome = "";
+        String nome;
         Scanner scan = new Scanner(System.in);
-        while(!nome.equals("x")){
+        do{
             System.out.println("\n\nDigite o nome do Ator ou x para sair: ");
             nome = scan.nextLine();
             if(nome.equals("x")){ System.exit(0);}
             fileActors.informacoesDoAtor(fileActress, nome);
-        }
+        }while(true);
     }
 }
