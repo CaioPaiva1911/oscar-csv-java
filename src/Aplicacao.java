@@ -16,14 +16,19 @@ public class Aplicacao {
 
         fileActors.atoresEAtrizesQueGanharamMaisDeUmOscar(fileActress);
 
-        System.out.println("\n\nInformações do Ator!");
-        String nome;
-        Scanner scan = new Scanner(System.in);
-        do{
-            System.out.println("\nDigite o nome do Ator ou x para sair: ");
-            nome = scan.nextLine();
-            if(nome.equals("x")){ System.exit(0);}
-            fileActors.informacoesDoAtor(fileActress, nome);
-        }while(true);
+        try{
+            System.out.println("\n\nInformações do Ator!");
+            String nome;
+            Scanner scan = new Scanner(System.in);
+            do{
+                System.out.println("\nDigite o nome do Ator ou x para sair: ");
+                nome = scan.nextLine();
+                if(nome.equals("x")){ System.exit(0);}
+                fileActors.informacoesDoAtor(fileActress, nome);
+            }while(true);
+        } catch (IndexOutOfBoundsException e){
+            System.out.println("Ator/Atriz não encontrado!");
+        }
+
     }
 }
