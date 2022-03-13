@@ -15,15 +15,16 @@ public class Aplicacao {
         fileActress.atrizQueMaisGanhouEntre20e30Anos();
 
         fileActors.atoresEAtrizesQueGanharamMaisDeUmOscar(fileActress);
-
-        try{
-            System.out.println("\n\nInformações do Ator!");
-            menu(fileActors, fileActress);
-        } catch (IndexOutOfBoundsException e){
-            System.out.println("Ator/Atriz não encontrado!");
-            menu(fileActors, fileActress);
-        }
-
+        boolean notFoundActor = true;
+        do {
+            try {
+                System.out.println("\n\nInformações do Ator!");
+                menu(fileActors, fileActress);
+                notFoundActor = false;
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("Ator/Atriz não encontrado!");
+            }
+        } while (notFoundActor);
     }
 
     public static void menu(Arquivo file, Arquivo otherFile){
