@@ -73,6 +73,7 @@ public class Arquivo {
         atrizes.entrySet()
                 .stream()
                 .filter(a -> a.getValue().equals(valor))
+                .sorted(Map.Entry.comparingByKey())
                 .forEach( a -> System.out.println(a.getKey() + " ganhou " + a.getValue() + " vezes"));
     }
 
@@ -102,9 +103,9 @@ public class Arquivo {
 
       allActors.stream()
               .sorted()
-              .forEach( a -> System.out.println("Ganhou no filme: " +
+              .forEach( a -> System.out.println("Ganhou no filme " +
                        a.getMovie() +
-                       " com " + a.getAge() + " anos em: " +
+                       " com " + a.getAge() + " anos em " +
                        a.getYear()));
     }
 }
