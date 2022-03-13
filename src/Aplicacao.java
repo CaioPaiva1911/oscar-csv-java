@@ -18,17 +18,22 @@ public class Aplicacao {
 
         try{
             System.out.println("\n\nInformações do Ator!");
-            String nome;
-            Scanner scan = new Scanner(System.in);
-            do{
-                System.out.println("\nDigite o nome do Ator ou x para sair: ");
-                nome = scan.nextLine();
-                if(nome.equals("x")){ System.exit(0);}
-                fileActors.informacoesDoAtor(fileActress, nome);
-            }while(true);
+            menu(fileActors, fileActress);
         } catch (IndexOutOfBoundsException e){
             System.out.println("Ator/Atriz não encontrado!");
+            menu(fileActors, fileActress);
         }
 
+    }
+
+    public static void menu(Arquivo file, Arquivo otherFile){
+        String nome;
+        Scanner scan = new Scanner(System.in);
+        do{
+            System.out.println("\nDigite o nome do Ator ou x para sair: ");
+            nome = scan.nextLine();
+            if(nome.equals("x")){ System.exit(0);}
+            file.informacoesDoAtor(otherFile, nome);
+        }while(true);
     }
 }
