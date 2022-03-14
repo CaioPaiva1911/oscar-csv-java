@@ -94,12 +94,11 @@ public class Arquivo {
     public void informacoesDoAtor(Arquivo file, String nome){
 
       List<Actor> allActors = Stream.concat(this.getAtoresList().stream(), file.getAtoresList().stream())
-              .filter(a -> a.getName().equals(nome))
+              .filter(a -> a.getName().contains(nome))
               .collect(Collectors.toList());
 
-      long totalOscars = allActors.size();
       Optional<Actor> actor = Optional.of(allActors.get(0));
-      System.out.println(actor.get().getName() + " ganhou " + totalOscars + " vezes o oscar!");
+      System.out.println(actor.get().getName() + " ganhou " + allActors.size() + " vezes o oscar!");
 
       allActors.stream()
               .sorted()
